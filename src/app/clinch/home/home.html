@@ -1,0 +1,21 @@
+<H1>WELCOME HOME</H1>
+
+<table class="table">
+	
+<tr ng-repeat="item in vm.Stationeries">
+	<td>{{item.name}}</td>
+	<td>{{item.price}}</td>
+	<td><input type="text" ng-model="item.unit"></td>
+<!-- 	<td>{{item.unit}}</td> -->	
+	<td>{{item.description}}</td>
+	
+</tr>
+
+
+</table>
+
+<!-- <div >
+	
+<div>{{item}}</div>
+
+</div> -->
