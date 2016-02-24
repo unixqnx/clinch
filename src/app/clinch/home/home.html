@@ -1,21 +1,33 @@
 <H1>WELCOME HOME</H1>
 
-<table class="table">
-	
-<tr ng-repeat="item in vm.Stationeries">
-	<td>{{item.name}}</td>
-	<td>{{item.price}}</td>
-	<td><input type="text" ng-model="item.unit"></td>
-<!-- 	<td>{{item.unit}}</td> -->	
-	<td>{{item.description}}</td>
-	
-</tr>
 
+<div class="panel panel-default">
+  <div class="panel-heading">
+	<h4>
+        Доступные канцелярские товары. 
+    </h4>
+  </div>
+  <div class="sc">
+	<table class="table table-striped table-fixed">
+		<div class="container">
+			<thead>
+				<tr class="row">
+					<th>Название</th>
+					<th>Цена</th>
+					<th>Единици</th>
+					<th>Описание</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in vm.Stationeries" class="row">
+					<td class="col-lg-4">{{item.name}}</td>
+					<td class="col-lg-1">{{item.price}}</td>
+					<td class="col-lg-1">{{item.unit}}</td>
+					<td class="col-lg-6">{{item.description}}</td>
+				</tr>
+			</tbody>
+		</div>
+	</table>        
 
-</table>
-
-<!-- <div >
-	
-<div>{{item}}</div>
-
-</div> -->
+  </div>
+</div>

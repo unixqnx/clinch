@@ -53,8 +53,6 @@ var json =
 '{"stationery_id":39, "name":"Закладки (клей) stick", "price":144, "unit":"ш.т.", "description":"some text"}]';
 
 
-
-
 return angular.fromJson(json);
 }
 
