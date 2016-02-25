@@ -1,20 +1,18 @@
 (function(){
 'use strict'
 
-angular.module('clinch').controller('HomeController', function(stationery){
+angular.module('clinch').controller('HomeController', function(stationery, request){
 
 var vm = this;
 
 
-vm.getStationeries = function(){
 
-	return stationery.getStationeries();
-}
+vm.Stationeries = stationery.getStationeries();
+vm.Request = request.getRequest();
 
-vm.Stationeries = vm.getStationeries();
-
-
-
+vm.Add = function(stationeryVM){
+	stationeryVM.selected = true;
+};
 
 
 
