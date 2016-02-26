@@ -90,4 +90,4 @@ function Staff(id, surName, name, patronymic){
 
 
 }]);
-})();
+})(); 

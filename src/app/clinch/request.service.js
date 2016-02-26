@@ -8,7 +8,7 @@ angular.module('clinch').service('request',[function(){
 this.getRequest = function(){
 	var json = 
 	'{"id":1001,'+
-	 '"description":"",'+
+	 '"description":"some words",'+
 	 '"purchase":{"id":99,'+
 	 			 '"purchaseName":"Ежигодная закупка для сотрудников",'+
 	 			 '"startDate":"01.02.2016",'+

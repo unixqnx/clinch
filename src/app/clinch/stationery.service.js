@@ -2,7 +2,7 @@
 {
 
 'use strict'
-angular.module('clinch').service('stationery', ['VMFactory',function(VMFactory){
+angular.module('clinch').service('stationery', [function(VMFactory){
 
 
 this.getStationeries = function(){
@@ -54,16 +54,7 @@ var json =
 
 
 var stationeries = angular.fromJson(json);
-
-
-var stationeryVM = [];
-
-for(var item in stationeries)
-{
-stationeryVM.push(VMFactory.newStationeryVM(stationeries[item]));
-}
-
-return stationeryVM;
+return stationeries;
 }
 
 }]);

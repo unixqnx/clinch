@@ -2,15 +2,19 @@
 
 'use strict'
 
-angular.module('clinch').service('VMFactory', ['model', function(model){
+angular.module('clinch').service('VMFactory', ['model', 'request', 'stationery', function(model, request, stationery){
 
-	this.newStationeryVM = function(stationery){
-		return new stationeryViewModel(stationery)
+
+	this.getHomeVM = function(){
+		var req = request.getRequest();
+		var stationeries = stationery.getStationeries();
+
+		var requestVM = newHomeVM(stationeries, req);
+		return requestVM;
 	};
 
 
-
-	this.newHomeVM = function(stationeries, request){
+	function newHomeVM(stationeries, request){
 
 		var result=[];
 		var requestPositions = request.requestPositions;
@@ -44,16 +48,11 @@ angular.module('clinch').service('VMFactory', ['model', function(model){
 
 }]);
 
-function stationeryViewModel(stationery){
-	this.selected = false;
-	
-	this.stationeries = stationery;
-}
 
 
 function homeVM(selected, stationery, requestPosition){
 	this.selected = selected;
-	this.stationery = stationery;
+	this.stationeries = stationery;
 	this.requestPosition = requestPosition;
 }
 
