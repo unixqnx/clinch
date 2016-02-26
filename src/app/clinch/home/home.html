@@ -1,4 +1,4 @@
-<H1>WELCOME HOME</H1>
+<H1>{{vm.homeVM.purchase.purchaseName}} ({{vm.homeVM.purchase.startDate}} - {{vm.homeVM.purchase.endDate}})</H1>
 
 
 
@@ -23,12 +23,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="item in vm.Stationeries" class="row">
+					<tr ng-repeat="item in vm.homeVM.stationeryVM" class="row">
 						<td class="col-lg-1"><input type="checkbox" ng-model="item.selected"></td>
-						<td class="col-lg-3">{{item.stationeries.name}}</td>
-						<td class="col-lg-1">{{item.stationeries.price}}</td>
-						<td class="col-lg-1">{{item.stationeries.unit}}</td>
-						<td class="col-lg-6">{{item.stationeries.description}}</td>
+						<td class="col-lg-3">{{item.stationery.name}}</td>
+						<td class="col-lg-1">{{item.stationery.price}}</td>
+						<td class="col-lg-1">{{item.stationery.unit}}</td>
+						<td class="col-lg-6">{{item.stationery.description}}</td>
 					</tr>
 				</tbody>
 			</div>
@@ -57,12 +57,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="item in vm.Stationeries | filter:{selected:true}" class="row">
+					<tr ng-repeat="item in vm.homeVM.stationeryVM | filter:{selected:true}" class="row">
 						<td class="col-lg-1"><input type="checkbox" ng-model="item.selected"></td>					
-						<td class="col-lg-3">{{item.stationeries.name}}</td>
-						<td class="col-lg-1">{{item.stationeries.price}}</td>
-						<td class="col-lg-1"><input type="text" size="1" ng-model="item.requestPosition.count"> {{item.stationeries.unit}}</td>
-						<td class="col-lg-6">{{item.stationeries.description}}</td>
+						<td class="col-lg-3">{{item.stationery.name}}</td>
+						<td class="col-lg-1">{{item.stationery.price}}</td>
+						<td class="col-lg-1"><input type="text" size="1" ng-model="item.requestPosition.count"> {{item.stationery.unit}}</td>
+						<td class="col-lg-6">{{item.stationery.description}}</td>
 					</tr>
 				</tbody>
 			</div>

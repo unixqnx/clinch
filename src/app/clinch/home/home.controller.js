@@ -7,7 +7,7 @@ var vm = this;
 
 
 
-vm.Stationeries = VMFactory.getHomeVM();
+vm.homeVM = VMFactory.getHomeVM();
 
 
 vm.Add = function(stationeryVM){

@@ -8,13 +8,18 @@ angular.module('clinch').service('VMFactory', ['model', 'request', 'stationery',
 	this.getHomeVM = function(){
 		var req = request.getRequest();
 		var stationeries = stationery.getStationeries();
-
-		var requestVM = newHomeVM(stationeries, req);
-		return requestVM;
+		var stationeryVM = newStationeryVM(stationeries, req);
+		var homeVM = gethomeVM(stationeryVM, req);
+		
+		return homeVM;
 	};
 
 
-	function newHomeVM(stationeries, request){
+
+
+//----------VIEW MODELS CREATING
+
+	function newStationeryVM(stationeries, request){
 
 		var result=[];
 		var requestPositions = request.requestPositions;
@@ -28,7 +33,7 @@ angular.module('clinch').service('VMFactory', ['model', 'request', 'stationery',
 			requestPositions.forEach(function(pos){
 
 				if(stat.stationeryId === pos.stationeryId){
-					result.push(new homeVM(true, stat, pos));
+					result.push(new stationeryVM(true, stat, pos));
 					exist = true;
 					return;
 				}
@@ -37,7 +42,7 @@ angular.module('clinch').service('VMFactory', ['model', 'request', 'stationery',
 
 			if(!exist){
 				var requestPosition = new model.newRequestPosition(DEFAULT_REQUEST_POSITION_ID, request.id, stat.stationeryId, DEFAULT_COUNT)
-				result.push(new homeVM(false, stat, requestPosition));
+				result.push(new stationeryVM(false, stat, requestPosition));
 			}
 
 		});
@@ -46,16 +51,33 @@ angular.module('clinch').service('VMFactory', ['model', 'request', 'stationery',
 	};
 
 
-}]);
+	function gethomeVM(stationeryVM, request){
+		return new homeVM(stationeryVM, request);
+	}
+
+//----------END VIEW MODELS CREATING
 
 
 
-function homeVM(selected, stationery, requestPosition){
+//----------VIEW MODELS
+
+function stationeryVM(selected, stationery, requestPosition){
 	this.selected = selected;
-	this.stationeries = stationery;
+	this.stationery = stationery;
 	this.requestPosition = requestPosition;
 }
 
+
+function homeVM(stationeryVM, request){
+	this.stationeryVM = stationeryVM;
+	this.requestDescription = request.description;
+	this.purchase = request.purchase;
+	this.staff = request.staff;
+}
+
+//----------END VIEW MODELS
+
+}]);
 })();
 
 
