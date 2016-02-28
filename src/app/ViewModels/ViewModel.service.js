@@ -8,18 +8,22 @@ angular.module('clinch').service('VMFactory', ['model', 'request', 'stationery',
 	this.getHomeVM = function(){
 		var req = request.getRequest();
 		var stationeries = stationery.getStationeries();
-		var stationeryVM = newStationeryVM(stationeries, req);
-		var homeVM = gethomeVM(stationeryVM, req);
+		var stationeryPositionVM = newStationeryPositionVM(stationeries, req);
+		var homeVM = gethomeVM(stationeryPositionVM, req);
 		
 		return homeVM;
 	};
 
 
+	this.getStationeriesVM = function(){
+			var stationeries = stationery.getStationeries();
+			return new stationeryVM(stationeries);
+	};
 
 
 //----------VIEW MODELS CREATING
 
-	function newStationeryVM(stationeries, request){
+	function newStationeryPositionVM(stationeries, request){
 
 		var result=[];
 		var requestPositions = request.requestPositions;
@@ -33,7 +37,7 @@ angular.module('clinch').service('VMFactory', ['model', 'request', 'stationery',
 			requestPositions.forEach(function(pos){
 
 				if(stat.stationeryId === pos.stationeryId){
-					result.push(new stationeryVM(true, stat, pos));
+					result.push(new stationeryPositionVM(true, stat, pos));
 					exist = true;
 					return;
 				}
@@ -42,7 +46,7 @@ angular.module('clinch').service('VMFactory', ['model', 'request', 'stationery',
 
 			if(!exist){
 				var requestPosition = new model.newRequestPosition(DEFAULT_REQUEST_POSITION_ID, request.id, stat.stationeryId, DEFAULT_COUNT)
-				result.push(new stationeryVM(false, stat, requestPosition));
+				result.push(new stationeryPositionVM(false, stat, requestPosition));
 			}
 
 		});
@@ -51,8 +55,8 @@ angular.module('clinch').service('VMFactory', ['model', 'request', 'stationery',
 	};
 
 
-	function gethomeVM(stationeryVM, request){
-		return new homeVM(stationeryVM, request);
+	function gethomeVM(stationeryPositionVM, request){
+		return new homeVM(stationeryPositionVM, request);
 	}
 
 //----------END VIEW MODELS CREATING
@@ -61,18 +65,23 @@ angular.module('clinch').service('VMFactory', ['model', 'request', 'stationery',
 
 //----------VIEW MODELS
 
-function stationeryVM(selected, stationery, requestPosition){
+function stationeryPositionVM(selected, stationery, requestPosition){
 	this.selected = selected;
 	this.stationery = stationery;
 	this.requestPosition = requestPosition;
 }
 
 
-function homeVM(stationeryVM, request){
-	this.stationeryVM = stationeryVM;
+function homeVM(stationeryPositionVM, request){
+	this.stationeryPositionVM = stationeryPositionVM;
 	this.requestDescription = request.description;
 	this.purchase = request.purchase;
 	this.staff = request.staff;
+}
+
+
+function stationeryVM(stationeries){
+	this.stationeries = stationeries;
 }
 
 //----------END VIEW MODELS

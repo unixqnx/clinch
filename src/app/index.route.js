@@ -22,16 +22,25 @@
           })
           .state('clinch.settings', {
             url: 'settings',
+            // abstract:true,
             templateUrl: 'app/clinch/settings/settings.html',//'app/main/main.html',
             controller: 'MainController',
             controllerAs: 'main'
           })
               .state('clinch.settings.stationery', {
-                url: '/stationery',
+                url: '/',
                 templateUrl: 'app/clinch/settings/tabs/stationery/stationery.html',
                 controller:'StationeryController',
                 controllerAs:'vmS'
               })
+                  .state('clinch.settings.edit', {
+                    url: '/edit',
+                    templateUrl: 'app/clinch/settings/tabs/stationery/edit.html',
+                    controller:'StationeryController',
+                    controllerAs:'vmS'
+                  })
+
+
               .state('clinch.settings.purchase', {
                 url: '/purchase',
                 templateUrl: 'app/clinch/settings/tabs/purchase/purchase.html',

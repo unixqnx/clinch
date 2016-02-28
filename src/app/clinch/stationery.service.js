@@ -8,9 +8,9 @@ angular.module('clinch').service('stationery', [function(VMFactory){
 this.getStationeries = function(){
 
 var json = 
-'[{"stationeryId":1, "name":"Ручка шариковая син.", "price":50, "unit":"ш.т.", "description":"some text", "deleted":false, "deleted":false},'+
-'{"stationeryId":2, "name":"Ручка шариковая чер.", "price":50, "unit":"ш.т.", "description":"some text", "deleted":false},'+
-'{"stationeryId":3, "name":"Ручка гел. син.", "price":120, "unit":"ш.т.", "description":"some text", "deleted":false},'+
+'[{"stationeryId":1, "name":"Ручка шариковая син.", "price":50, "unit":"ш.т.", "description":"some text", "deleted":false, "deleted":true},'+
+'{"stationeryId":2, "name":"Ручка шариковая чер.", "price":50, "unit":"ш.т.", "description":"some text", "deleted":null},'+
+'{"stationeryId":3, "name":"Ручка гел. син.", "price":120, "unit":"ш.т.", "description":"some text", "deleted":true},'+
 '{"stationeryId":4, "name":"Ручка гел. чер.", "price":120, "unit":"ш.т.", "description":"some text", "deleted":false},'+
 '{"stationeryId":5, "name":"Карандаш простой", "price":30, "unit":"ш.т.", "description":"some text", "deleted":false},'+
 '{"stationeryId":6, "name":"Маркер для доски", "price":90, "unit":"ш.т.", "description":"some text", "deleted":false},'+

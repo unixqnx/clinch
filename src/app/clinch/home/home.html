@@ -23,7 +23,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="item in vm.homeVM.stationeryVM" class="row">
+					<tr ng-repeat="item in vm.homeVM.stationeryPositionVM" class="row">
 						<td class="col-lg-1"><input type="checkbox" ng-model="item.selected"></td>
 						<td class="col-lg-3">{{item.stationery.name}}</td>
 						<td class="col-lg-1">{{item.stationery.price}}</td>
@@ -57,7 +57,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="item in vm.homeVM.stationeryVM | filter:{selected:true}" class="row">
+					<tr ng-repeat="item in vm.homeVM.stationeryPositionVM | filter:{selected:true}" class="row">
 						<td class="col-lg-1"><input type="checkbox" ng-model="item.selected"></td>					
 						<td class="col-lg-3">{{item.stationery.name}}</td>
 						<td class="col-lg-1">{{item.stationery.price}}</td>

@@ -11,7 +11,7 @@ vm.homeVM = VMFactory.getHomeVM();
 
 
 vm.Add = function(stationeryVM){
-	stationeryVM.selected = true;
+	stationeryPositionVM.selected = true;
 };
 
 
