@@ -1,36 +1,3 @@
-<H1>Hello Stationery</H1>
-
-<div class="panel panel-default">
-  <div class="panel-heading">
-	<h4>
-        Доступные канцелярские товары. 
-    </h4>
-  </div>
-	<div class="block sc">
-		<table class="table table-striped">
-			<div class="container">	
-				<thead class="">
-					<tr class="row">
-				
-						<th class="col-lg-3">Название</th>
-						<th class="col-lg-1">Цена</th>
-						<th class="col-lg-1">Единици</th>
-						<th class="col-lg-6">Описание</th>
-						<th class="col-lg-6">Удалено</th>						
-						<th class="col-lg-1">...</th>							
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="item in vmS.stationeriesVM.stationeries" class="row">
-						<td class="col-lg-3">{{item.name}}</td>
-						<td class="col-lg-1">{{item.price}}</td>
-						<td class="col-lg-1">{{item.unit}}</td>
-						<td class="col-lg-5">{{item.description}}</td>
-						<td class="col-lg-1"><input type="checkbox" disabled ng-model="item.deleted"></td>						
-						<td class="col-lg-1"><input type="button" value="Править" ng-click="vmS.Navigate('clinch.settings.edit')"></td>						
-					</tr>
-				</tbody>
-			</div>
-		</table>   
-	</div>
-</div>
+<!-- <div>=======================</div> -->
+<div ui-view></div>
+<!-- <div>=======================</div> -->

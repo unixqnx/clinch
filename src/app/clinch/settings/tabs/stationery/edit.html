@@ -1,1 +1,55 @@
 <H1>Hello Edit</H1>
+
+<form>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-lg-offset-2">
+				<div class="row">
+					<div class="form-group col-lg-12">
+						<label for="name">Имя</label>
+						<input type="text" id="name" class="form-control" ng-model="vmS.stationery.name">
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-lg-4">
+						<label for="name1">Единицы</label>
+						<input type="text" id="nameu" class="form-control" ng-model="vmS.stationery.unit">
+					</div>
+					<div class="form-group col-lg-4">
+						<label for="name2">Цена</label>
+						<input type="text" id="nameub" class="form-control" ng-model="vmS.stationery.price">
+					</div>
+				</div>
+				<div class="row">
+					<div class="checkbox col-lg-4">
+						<label>
+							<input type="checkbox" ng-model="vmS.stationery.deleted">Удалено
+						</label>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+			    <div class="form-group">
+			      <label for="comment">Комментарий:</label>
+			      <textarea class="form-control" rows="5" id="comment" ng-model="vmS.stationery.description"></textarea>
+			    </div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-xs-12">
+				<div class="row">
+					<div class="col-lg-2 col-xs-2">
+						<button class="btn btn-primary btn-block" ng-click="vmS.save()">Сохранить</button>
+					</div>
+					<div class="col-lg-2 col-xs-2">
+						<button class="btn btn-default btn-block" ng-click="vmS.cancel()">Отменить</button>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+

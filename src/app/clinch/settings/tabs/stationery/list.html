@@ -26,8 +26,17 @@
 						<td class="col-lg-1">{{item.price}}</td>
 						<td class="col-lg-1">{{item.unit}}</td>
 						<td class="col-lg-5">{{item.description}}</td>
-						<td class="col-lg-1"><input type="checkbox" disabled ng-model="item.deleted"></td>						
-						<td class="col-lg-1"><input type="button" value="Править" ng-click="vmS.Navigate('clinch.settings.edit')"></td>						
+						<td class="col-lg-1"><input type="checkbox" disabled ng-model="item.deleted"></td>	
+<!-- 							<td class="col-lg-1">
+									<li ui-sref="clinch.settings.stationery.edit" ng-class="{active: vmS.state.includes('stationery')}">
+										<a href="#">Править</a>
+									</li>
+
+
+							</td>	 -->	
+
+						<td class="col-lg-1"><input type="button" value="Править" ng-click="vmS.Navigate('clinch.settings.stationery.edit',{stationeryId:item.stationeryId})"></td>						
+
 					</tr>
 				</tbody>
 			</div>

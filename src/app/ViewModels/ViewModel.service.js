@@ -82,7 +82,28 @@ function homeVM(stationeryPositionVM, request){
 
 function stationeryVM(stationeries){
 	this.stationeries = stationeries;
+
+	this.getStationeryById = function(id){
+		for(var i=0;i<this.stationeries.length;i++){
+			if(this.stationeries[i].stationeryId === id){
+				return this.stationeries[i];
+			}
+		}
+	}
+
+	this.indexOfId = function(stationery){
+		var returnValue = -1;
+		this.stationeries.forEach(function(currentValue, index){
+			if(currentValue.stationeryId == stationery.stationeryId){
+				returnValue = index;
+			}
+		});
+		return returnValue;
+	}
+
+
 }
+
 
 //----------END VIEW MODELS
 

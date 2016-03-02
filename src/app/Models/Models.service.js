@@ -22,6 +22,11 @@ this.newStaff = function(id, surName, name, patronymic){
 	return new Staff(id, surName, name, patronymic);
 };
 
+this.newStationery = function(stationeryId, name, price, unit, description, deleted){
+	return new Stationery(stationeryId, name, price, unit, description, deleted)
+}
+
+
 
 function RequestPosition(id, requestId, stationeryId, count){
 	if(arguments.length==0){
@@ -87,6 +92,44 @@ function Staff(id, surName, name, patronymic){
 		this.patronymic = patronymic; 
 	}
 }
+
+
+function Stationery(stationeryId,name,price,unit,description,deleted){
+	if(arguments.length==0){
+		this.stationeryId = null;
+		this.name = null;
+		this.price = null;
+		this.unit = null;
+		this.description = null;
+		this.deleted = null;
+		return;
+	}
+
+	if(arguments[0]!=undefined && ('stationeryId' in arguments[0])){
+		var origin = arguments[0];
+
+		this.stationeryId = origin.stationeryId;
+		this.name = origin.name;
+		this.price = origin.price;
+		this.unit = origin.unit;
+		this.description = origin.description;
+		this.deleted = origin.deleted;
+	}
+	else{
+		this.stationeryId = stationeryId;
+		this.name = name;
+		this.price = price;
+		this.unit = unit;
+		this.description = description;
+		this.deleted = deleted;
+	}
+}
+
+
+
+
+
+
 
 
 }]);
