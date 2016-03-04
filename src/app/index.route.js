@@ -23,7 +23,6 @@
           .state('clinch.settings', {
             url: 'settings',
             abstract:true,
-            // defaultChild: 'clinch.settings.stationery',
             templateUrl: 'app/clinch/settings/settings.html',
             controller: 'MainController',
             controllerAs: 'main'
@@ -31,20 +30,17 @@
               .state('clinch.settings.stationery', {
                 url: '/stationery',
                 abstract:true,                
-                templateUrl: 'app/clinch/settings/tabs/stationery/stationery.html',
-                controller:'StationeryController',
-                controllerAs:'vmS'
+                templateUrl: 'app/clinch/settings/tabs/stationery/stationery.html'
               })
                   .state('clinch.settings.stationery.list', {
                     url:'/list',
                     templateUrl: 'app/clinch/settings/tabs/stationery/list.html',
-                    controller:'StationeryController',
+                    controller:'StationeryListController',
                     controllerAs:'vmS'
                   })
                   .state('clinch.settings.stationery.edit', {
-                    url: '/edit/',
-                    // url: '/edit/:stationeryId',
-                    params:{stationeryId:null},
+                    url: '/edit/:stationeryId',//it is better than using params because lets to use backward and forward buttons of browser
+                    //params:{stationeryId:null},
                     // onEnter:function($stateParams)
                     // {
                     //   alert($stateParams.stationeryId);
@@ -77,8 +73,7 @@
                 templateUrl: 'app/clinch/settings/tabs/staff/staff.html',
                 controller:'StaffController',
                 controllerAs:'vmSt'
-              })
-      ;
+              });
 
 
     $urlRouterProvider.otherwise('home');

@@ -114,7 +114,11 @@ function stationeryVM(stationeries){
 		this.stationeries.push(stationery);	
 	}
 
-	//temporary static method
+
+	this.updateStationery = function(stationery){
+		var index = this.indexOfId(stationery);
+		this.stationeries[index] = stationery;
+	}
 
 
 	function getPseudoId(){
