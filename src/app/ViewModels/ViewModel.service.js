@@ -4,11 +4,11 @@
 
 angular.module('clinch').service('VMFactory', ['model', 'request', 'stationery', function(model, request, stationery){
 
+	var _stationeries = stationery.getStationeries();
 
 	this.getHomeVM = function(){
 		var req = request.getRequest();
-		var stationeries = stationery.getStationeries();
-		var stationeryPositionVM = newStationeryPositionVM(stationeries, req);
+		var stationeryPositionVM = newStationeryPositionVM(_stationeries, req);
 		var homeVM = gethomeVM(stationeryPositionVM, req);
 		
 		return homeVM;
@@ -16,8 +16,7 @@ angular.module('clinch').service('VMFactory', ['model', 'request', 'stationery',
 
 
 	this.getStationeriesVM = function(){
-			var stationeries = stationery.getStationeries();
-			return new stationeryVM(stationeries);
+			return new stationeryVM(_stationeries);
 	};
 
 
@@ -83,6 +82,7 @@ function homeVM(stationeryPositionVM, request){
 function stationeryVM(stationeries){
 	this.stationeries = stationeries;
 
+
 	this.getStationeryById = function(id){
 		for(var i=0;i<this.stationeries.length;i++){
 			if(this.stationeries[i].stationeryId === id){
@@ -90,6 +90,7 @@ function stationeryVM(stationeries){
 			}
 		}
 	}
+
 
 	this.indexOfId = function(stationery){
 		var returnValue = -1;
@@ -101,6 +102,28 @@ function stationeryVM(stationeries){
 		return returnValue;
 	}
 
+
+	this.deleteStationeryById = function(stationery){
+		var index = this.indexOfId(stationery);
+		this.stationeries.splice(index, 1);
+	}
+
+
+	this.addStationery = function(stationery){
+		stationery.stationeryId = getPseudoId.call(this);
+		this.stationeries.push(stationery);	
+	}
+
+	//temporary static method
+
+
+	function getPseudoId(){
+		var minValue=0;
+		this.stationeries.forEach(function(currentValue, index){
+			minValue = (currentValue.stationeryId < minValue) ? currentValue.stationeryId : minValue;
+		});
+		return minValue - 1;
+	};
 
 }
 

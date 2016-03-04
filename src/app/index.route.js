@@ -22,7 +22,7 @@
           })
           .state('clinch.settings', {
             url: 'settings',
-            // abstract:true,
+            abstract:true,
             // defaultChild: 'clinch.settings.stationery',
             templateUrl: 'app/clinch/settings/settings.html',
             controller: 'MainController',
@@ -30,12 +30,13 @@
           })
               .state('clinch.settings.stationery', {
                 url: '/stationery',
+                abstract:true,                
                 templateUrl: 'app/clinch/settings/tabs/stationery/stationery.html',
                 controller:'StationeryController',
                 controllerAs:'vmS'
               })
                   .state('clinch.settings.stationery.list', {
-                    url: '/list',
+                    url:'/list',
                     templateUrl: 'app/clinch/settings/tabs/stationery/list.html',
                     controller:'StationeryController',
                     controllerAs:'vmS'
@@ -49,10 +50,15 @@
                     //   alert($stateParams.stationeryId);
                     // },
                     templateUrl: 'app/clinch/settings/tabs/stationery/edit.html',
-                    controller:'StationeryController',
-                    controllerAs:'vmS'
+                    controller:'StationeryEditController',
+                    controllerAs:'vmSE'
                   })
-
+                  .state('clinch.settings.stationery.add', {
+                    url: '/add/',
+                    templateUrl: 'app/clinch/settings/tabs/stationery/edit.html',
+                    controller:'stationeryAddController',
+                    controllerAs:'vmSE'
+                  })
 
               .state('clinch.settings.purchase', {
                 url: '/purchase',

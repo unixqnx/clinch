@@ -1,5 +1,24 @@
 <H1>Hello Stationery</H1>
 
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Вы действительно хотите удалить:</h4>
+      </div>
+      <div class="modal-body">
+        <p>{{vmS.deletingStationery.name}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Отменить</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="vmS.DeleteStationery()">Удалить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="panel panel-default">
   <div class="panel-heading">
 	<h4>
@@ -9,15 +28,15 @@
 	<div class="block sc">
 		<table class="table table-striped">
 			<div class="container">	
-				<thead class="">
+				<thead>
 					<tr class="row">
-				
 						<th class="col-lg-3">Название</th>
 						<th class="col-lg-1">Цена</th>
 						<th class="col-lg-1">Единици</th>
-						<th class="col-lg-6">Описание</th>
-						<th class="col-lg-6">Удалено</th>						
-						<th class="col-lg-1">...</th>							
+						<th class="col-lg-4">Описание</th>
+						<th class="col-lg-1">Скрыть</th>						
+						<th class="col-lg-1">...</th>		
+						<th class="col-lg-1">...</th>		
 					</tr>
 				</thead>
 				<tbody>
@@ -25,21 +44,27 @@
 						<td class="col-lg-3">{{item.name}}</td>
 						<td class="col-lg-1">{{item.price}}</td>
 						<td class="col-lg-1">{{item.unit}}</td>
-						<td class="col-lg-5">{{item.description}}</td>
+						<td class="col-lg-4">{{item.description}}</td>
 						<td class="col-lg-1"><input type="checkbox" disabled ng-model="item.deleted"></td>	
-<!-- 							<td class="col-lg-1">
-									<li ui-sref="clinch.settings.stationery.edit" ng-class="{active: vmS.state.includes('stationery')}">
-										<a href="#">Править</a>
-									</li>
-
-
-							</td>	 -->	
-
-						<td class="col-lg-1"><input type="button" value="Править" ng-click="vmS.Navigate('clinch.settings.stationery.edit',{stationeryId:item.stationeryId})"></td>						
-
+						<td class="col-lg-1">
+							<input type="button" 
+							value="Править" 
+							class="btn btn-primary" 
+							ng-click="vmS.Navigate('clinch.settings.stationery.edit',{stationeryId:item.stationeryId})">
+						</td>	
+						<td class="col-lg-1">
+							<input type="button" 
+							value="Удалить" 
+							class="btn btn-primary" 
+							data-toggle="modal" 
+							data-target="#myModal"
+							ng-click="vmS.SetDeletingStationery(item)">
+						</td>	
 					</tr>
 				</tbody>
 			</div>
-		</table>   
+		</table>  
 	</div>
 </div>
+
+<button class="btn btn-primary" ng-click="vmS.Navigate('clinch.settings.stationery.add')">Добавить</button>
