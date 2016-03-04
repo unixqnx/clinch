@@ -2,7 +2,7 @@
 {
 
 'use strict'
-angular.module('clinch').service('stationery', [function(VMFactory){
+angular.module('clinch').service('stationery', function(){
 
 
 this.getStationeries = function(){
@@ -57,7 +57,7 @@ var stationeries = angular.fromJson(json);
 return stationeries;
 }
 
-}]);
+});
 })();
 
 

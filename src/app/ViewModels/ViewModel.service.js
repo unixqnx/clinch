@@ -2,7 +2,7 @@
 
 'use strict'
 
-angular.module('clinch').service('VMFactory', ['model', 'request', 'stationery', function(model, request, stationery){
+angular.module('clinch').service('VMFactory', function(model, request, stationery){
 
 	var _stationeries = stationery.getStationeries();
 
@@ -51,7 +51,7 @@ angular.module('clinch').service('VMFactory', ['model', 'request', 'stationery',
 		});
 
 		return result;
-	};
+	}
 
 
 	function gethomeVM(stationeryPositionVM, request){
@@ -123,18 +123,18 @@ function stationeryVM(stationeries){
 
 	function getPseudoId(){
 		var minValue=0;
-		this.stationeries.forEach(function(currentValue, index){
+		this.stationeries.forEach(function(currentValue){
 			minValue = (currentValue.stationeryId < minValue) ? currentValue.stationeryId : minValue;
 		});
 		return minValue - 1;
-	};
+	}
 
 }
 
 
 //----------END VIEW MODELS
 
-}]);
+});
 })();
 
 

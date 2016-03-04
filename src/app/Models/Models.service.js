@@ -1,7 +1,7 @@
 (function(){
 'use strict'
 
-angular.module('clinch').service('model',[function(){
+angular.module('clinch').service('model',function(){
 
 this.newRequest = function(id, purchase, staff, description, requestPosition){
 	return new Request(id, purchase, staff, description, requestPosition);
@@ -132,5 +132,5 @@ function Stationery(stationeryId,name,price,unit,description,deleted){
 
 
 
-}]);
+});
 })(); 

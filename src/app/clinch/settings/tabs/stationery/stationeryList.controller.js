@@ -5,38 +5,38 @@
 angular.module('clinch').controller('StationeryListController', function(VMFactory, model, $state)
 {
 
-var vmS = this;
-vmS.deletingStationery = null;
+var vm = this;
+vm.deletingStationery = null;
 
-vmS.stationeriesVM = VMFactory.getStationeriesVM();
+vm.stationeriesVM = VMFactory.getStationeriesVM();
 
 (function(){
 	var stationeryId = $state.params.stationeryId;
 	if(stationeryId != null){
-		vmS.origin = vmS.stationeriesVM.getStationeryById($state.params.stationeryId);
-		vmS.stationery = model.newStationery(vmS.origin);
+		vm.origin = vm.stationeriesVM.getStationeryById($state.params.stationeryId);
+		vm.stationery = model.newStationery(vm.origin);
 	}
 })();
 
 
-vmS.Navigate = function(nav, param)
+vm.Navigate = function(nav, param)
 { 
 	$state.go(nav, param); 
 }
 
 
-vmS.SetDeletingStationery = function(stationery){
-	vmS.deletingStationery = stationery;
+vm.SetDeletingStationery = function(stationery){
+	vm.deletingStationery = stationery;
 }
 
 
-vmS.DeleteStationery = function(){
-	vmS.stationeriesVM.deleteStationeryById(vmS.deletingStationery)
+vm.DeleteStationery = function(){
+	vm.stationeriesVM.deleteStationeryById(vm.deletingStationery)
 }
 
 
-vmS.cancel = function(){
-	vmS.Navigate('clinch.settings.stationery.list')
+vm.cancel = function(){
+	vm.Navigate('clinch.settings.stationery.list')
 }
 })
 })();

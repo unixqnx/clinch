@@ -4,30 +4,30 @@
 
 angular.module('clinch').controller('stationeryAddController', function(VMFactory, model, $state){
 
-var vmSE = this;
-vmSE.title = 'Создать';
+var vm = this;
+vm.title = 'Создать';
 
-vmSE.stationeriesVM = VMFactory.getStationeriesVM();
+vm.stationeriesVM = VMFactory.getStationeriesVM();
 
 (function(){
-	vmSE.stationery = model.newStationery(vmSE.origin);
+	vm.stationery = model.newStationery(vm.origin);
 })();
 
 
-vmSE.Navigate = function(nav)
+vm.Navigate = function(nav)
 { 
 	$state.go(nav); 
 };
 
 
-vmSE.save = function(){
-	vmSE.stationeriesVM.addStationery(vmSE.stationery);
-	vmSE.Navigate('clinch.settings.stationery.list')	
+vm.save = function(){
+	vm.stationeriesVM.addStationery(vm.stationery);
+	vm.Navigate('clinch.settings.stationery.list')	
 }
 
 
-vmSE.cancel = function(){
-	vmSE.Navigate('clinch.settings.stationery.list')
+vm.cancel = function(){
+	vm.Navigate('clinch.settings.stationery.list')
 }
 });
 
